@@ -4,7 +4,7 @@ Simple searcher to find seeds with all nether biomes within a certain radius.
 
 ## Overview
 
-Find a Minecraft map seed that contains all nether biomes within the given radius (from `(0, 0)`).  Arguments are used like this:
+Find a Minecraft seed that contains all nether biomes within the given radius (from `(0, 0)`).  Arguments are used like this:
 
 ```bash
 $ diversenether.exe <radius> <skip>
@@ -21,4 +21,6 @@ Means that the search will be 100 blocks wide around `(0, 0)`, and only every 25
 
 This search runs very quickly. See below for benchmarks:
 
-TBD
+Found seed with all nether biomes within 50 blocks
+1133 seeds searched in 0 seconds
+Seed: 1579501499
