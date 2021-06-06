@@ -19,7 +19,7 @@ $ diversenether.exe 100 25
 
 Means that the search will be 100 blocks wide around `(0, 0)`, and only every 25th block will be checked.
 
-## Peformance
+## Performance
 
 This search runs very quickly. See below for benchmarks:
 ```
