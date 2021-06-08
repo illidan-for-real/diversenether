@@ -1,17 +1,34 @@
 use minecraft_nether_gen_rs::{NetherBiomes, NetherGen};
-use std::{collections::HashSet, env::{self, args}, fmt::{DebugTuple, Display}, iter::Enumerate, ops::{Index, Neg}, process::exit};
+use std::{any::Any, collections::HashSet, env::{self, args}, fmt::{DebugTuple, Display}, iter::Enumerate, ops::{Index, Neg}, process::exit};
 use rand::prelude::*;
 use std::time::{Duration, Instant};
+use std::io;
 
 fn main() {
 
     let now = Instant::now();
 
-    let default_dist: String = "100".to_string();
-    let default_interval: String = "25".to_string();
+    let mut default_dist = "".to_string();
+    let mut default_interval = "".to_string();
 
     // take arguments for searching and generation
     let args: Vec<String> = env::args().collect();
+
+    
+    if args.len() == 1 {
+        println!("Enter search distance:");
+        io::stdin()
+            .read_line(&mut default_dist)
+            .expect("Failed to read input");
+        default_dist = default_dist.parse().unwrap();
+
+        println!("Enter search interval:");
+        io::stdin()
+            .read_line(&mut default_interval)
+            .expect("Failed to read input");
+        default_interval = default_interval.parse().unwrap();
+    }
+
     let distance: i32 = match args
         .get(1)
         .or(Some(&default_dist))
@@ -21,6 +38,7 @@ fn main() {
             Err(e) => {
                 println!("failed to parse distance");
                 std::process::exit(1);
+
             }
         };
 
@@ -31,7 +49,7 @@ fn main() {
         .parse() {
             Ok(x) => x,
             Err(e) => {
-                println!("failed to parse distance");
+                println!("failed to parse interval");
                 std::process::exit(1);
             }
         };
@@ -82,6 +100,11 @@ fn main() {
             println!("Seed: {}", seed);
             println!();
             found_seed = true;
+
+            let mut number = String::new();
+            io::stdin()
+                .read_line(&mut number)
+                .expect("Failed to read input");
             exit(0)
         }
 
